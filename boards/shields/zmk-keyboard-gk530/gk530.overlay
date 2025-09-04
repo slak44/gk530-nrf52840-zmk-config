@@ -63,9 +63,12 @@
 &i2c0 {
   // Enables peripheral
 	status = "okay";
+	compatible = "nordic,nrf-twim";
 
-	pinctrl-0 = <&i2c0_custom_pins>;
-	pinctrl-names = "default";
+	pinctrl-0 = <&i2c0_default>;
+	pinctrl-1 = <&i2c0_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
 
 	display: display@3c {
 		compatible = "solomon,ssd1306fb";
@@ -77,11 +80,18 @@
 };
 
 &pinctrl {
-	i2c0_custom_pins: i2c0_custom_pins {
+	i2c0_default: i2c0_default {
 		group1 {
-			// NRF_PSEL(function, port, pin)
-			pinmux = <NRF_PSEL(SCL_0, 0, 11)>, // SCL -> P0.11
-					     <NRF_PSEL(SDA_0, 1, 0)>;	 // SDA -> P1.00
+			psels = <NRF_PSEL(TWIM_SCL, 0, 11)>, // SCL -> P0.11
+					    <NRF_PSEL(TWIM_SDA, 1, 0)>;  // SDA -> P1.00
 		};
 	};
+
+  i2c0_sleep: i2c0_sleep {
+    group1 {
+      psels = <NRF_PSEL(TWIM_SCL, 0, 11)>, // SCL -> P0.11
+              <NRF_PSEL(TWIM_SDA, 1, 0)>;  // SDA -> P1.00
+      low-power-enable;
+    };
+  };
 };
