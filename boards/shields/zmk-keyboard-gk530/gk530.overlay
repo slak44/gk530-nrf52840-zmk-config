@@ -49,15 +49,15 @@
         >;
     };
 
+    &layout_tkl_ansi {
+        kscan = <&kscan0>;
+        transform = <&default_transform>;
+    };
+
     chosen {
         zmk,physical-layout = &layout_tkl_ansi;
         zephyr,display = &oled;
     };
-};
-
-&layout_tkl_ansi {
-    kscan = <&kscan0>;
-    transform = <&default_transform>;
 };
 
 // Take this from parent board
