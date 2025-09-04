@@ -1,3 +1,4 @@
+name: zmk-keyboard-gk530
 build:
   settings:
     board_root: .

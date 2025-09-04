@@ -1,0 +1,6 @@
+if SHIELD_GK530
+
+config ZMK_KEYBOARD_NAME
+  default "GK530 nRF52840"
+
+endif

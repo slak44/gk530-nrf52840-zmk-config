@@ -1,0 +1,11 @@
+file_format: "1"
+id: gk530
+name: "GK530 Tournament"
+type: shield
+url: https://github.com/slak44/gk530-nrf52840-zmk-config/
+requires: [nice_nano_v2]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - studio
