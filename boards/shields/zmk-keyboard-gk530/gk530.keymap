@@ -1,6 +1,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
     keymap {
@@ -29,14 +31,13 @@
 
         fn_layer {
             display-name = "FN Layer";
-            compatible = "zmk,behavior-layer";
 
             // GRAVE = BT_CLR, 0-5 = BT_SEL
             // DELETE = sys_reset
             // F12 = bootloader
             // F4 = studio_unlock
             bindings = <
-    &trans &trans &trans &trans &studio_unlock &trans &trans &trans &trans &trans &trans &trans &bootloader &trans &trans &trans
+    &trans &ext_power EP_TOG &trans &trans &studio_unlock &trans &trans &trans &trans &trans &trans &trans &bootloader &trans &trans &trans
     &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 &trans &trans &trans &trans &trans &trans &trans   &trans &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans   &sys_reset &trans &trans
     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
