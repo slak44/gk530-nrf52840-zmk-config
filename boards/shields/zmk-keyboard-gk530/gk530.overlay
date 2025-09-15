@@ -65,9 +65,7 @@
     kscan = <&kscan0>;
 };
 
-// Take this from parent board
 &i2c0 {
-  // Enables peripheral
 	status = "okay";
 	compatible = "nordic,nrf-twim";
 
