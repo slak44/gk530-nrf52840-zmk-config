@@ -87,11 +87,13 @@
     page-offset = <0>;
     display-offset = <0>;
     multiplex-ratio = <31>;
-    com-invdir;
-    segment-remap;
     com-sequential;
     prechargep = <0xF1>;
     inversion-on;
+
+    // Reverses display:
+    //com-invdir;
+    //segment-remap;
   };
 };
 
