@@ -74,6 +74,9 @@
 	pinctrl-names = "default", "sleep";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
+	zephyr,concat-buf-size = <1024>;
+	zephyr,flash-buf-max-size = <1024>;
+
   oled: ssd1306@3c {
     status = "okay";
     compatible = "solomon,ssd1306fb";
