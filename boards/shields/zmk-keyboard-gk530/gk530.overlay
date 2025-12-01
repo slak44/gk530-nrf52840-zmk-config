@@ -1,7 +1,15 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <layouts/common/tkl/ansi.dtsi>
 
+#if !defined(GK530_REFERENCE) && !defined(GK530_CUSTOM)
+#error "Either GK530_REFERENCE or GK530_CUSTOM must be defined!"
+#endif
+
 / {
+  #ifdef GK530_CUSTOM
+  /delete-node/ leds;
+  #endif
+
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "row2col";
@@ -10,7 +18,11 @@
         col-gpios
             = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            #ifdef GK530_REFERENCE
             , <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            #else
+            , <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            #endif
             , <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -92,8 +104,10 @@
     inversion-on;
 
     // Reverses display:
-    //com-invdir;
-    //segment-remap;
+    #ifdef FLIP_DISPLAY
+    com-invdir;
+    segment-remap;
+    #endif
   };
 };
 
