@@ -36,7 +36,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings
-          = <&bt BT_SEL BT_PROFILE_PC>
+          = <&bt BT_SEL BT_PROFILE_MAC>
           , <&tog_on MACOS_LAYER>
           ;
     };
